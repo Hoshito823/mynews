@@ -12,7 +12,7 @@
 */
 
 //課題3
-Route::get('XXX','AAAController@bbb');
+//Route::get('XXX','AAAController@bbb');
 
 
 Route::group(['prefix' => 'admin'],function (){
@@ -27,3 +27,7 @@ Route::group(['prefix' => 'admin'],function (){
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

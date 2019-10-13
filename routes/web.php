@@ -11,22 +11,21 @@
 |
 */
 
-//課題3
-//Route::get('XXX','AAAController@bbb');
-
-
 Route::group(['prefix' => 'admin'],function (){
-    Route::get('news/create','Admin\NewsController@add');
-    
-//課題4
-    Route::get('profile/create','Admin\ProfileController@add');
-    Route::get('profile/edit','Admin\ProfileController@edit');
+    Route::get('news/create','Admin\NewsController@add') -> middleware('auth');
+    Route::get('profile/create','Admin\ProfileController@add') -> middleware('auth');
+    Route::get('profile/edit','Admin\ProfileController@edit') -> middleware('auth');
 }
 );
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 

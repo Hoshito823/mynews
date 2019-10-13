@@ -1,9 +1,8 @@
-{{-- Layouts/admin.blade.phpを読み込む --}}
-@extends('layouts.admin')
+{{-- Layouts/profile.blade.phpを読み込む --}}
+@extends('layouts.profile')
 
 {{-- admin.blade.phpの@yield('title')に第二引数を埋め込む --}}
 @section('title' , 'プロフィールページ')
-     
      
 {{-- admin.blade.phpの@yield('content')に以下のタグwp読み込み --}}
 @section('content')

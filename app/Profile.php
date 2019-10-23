@@ -14,4 +14,9 @@ class Profile extends Model
         'hobby' => 'required',
         'introduction' => 'required',
         );
+    
+    //テーブル名を記載
+    public function profile_histories(){
+        return $this->hasMany('App\ProfileHistory');
+    }
 }

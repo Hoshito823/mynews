@@ -14,7 +14,9 @@
                     <div class="caption mx-auto">
                     <div class="image">
                         @if ($headline->image_path)
-                            <img src="{{ asset('storage/image' . $headline->iamge_path) }}">
+                            <!--<img src="{{ asset('storage/image' . $headline->iamge_path) }}">-->
+                            <!--S3に保存してある画像を表示-->
+                            <img src="{{ $headline->image_path }}">
                         @endif
                     </div>
                     
@@ -59,7 +61,10 @@
                     
                     <div class="image col-md-6 text-right mt-4">
                         @if ($post->image_path)
-                            <img src="{{ asset('storage/image/' . $post->image_path) }}">
+                        
+                            <!--<img src="{{ asset('storage/image/' . $post->image_path) }}">-->
+                            <!--S3に保存してある画像表示用-->
+                            <img src="{{ $post->image_path }}">
                         @endif
                     </div>
                     

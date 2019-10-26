@@ -9,6 +9,8 @@ use App\News;
 use App\History;
 use Carbon\Carbon;
 
+use Storage;
+
 
 
 class NewsController extends Controller
@@ -30,10 +32,13 @@ class NewsController extends Controller
         //フォームの画像が送信されてきたら、保存する$news->image_pathに画像のパスを保存する
         if (isset($form['image'])){
             //画像本体をpublic/imageフォルダに保存する？
-            $path = $request->file('image')->store('public/image');
+            // $path = $request->file('image')->store('public/image');
+            $path = Storage::disk('s3')->putfile('/',$form['image'],'public');
             
             //newsテーブルの"image_path"カラムにパスを保存している？
-            $news->image_path = basename($path);
+            // $news->image_path = basename($path);
+            $news->image_path = Storage::disk('s3')->url($path);
+            
         } else {
             $news->image_path = null;     
         }
@@ -78,9 +83,13 @@ class NewsController extends Controller
         
         if (isset($news_form['image'])){
             //ファイルを保存。次行でパスを取得するためにインスタンスを$path変数に格納。
-            $path = $news_form->file('image')->store('public/image');
+            // $path = $news_form->file('image')->store('public/image');
+            $path = Storage::disk('s3')->putfile('/',$form['image'],'public');
+            
             //basename（）メソッドでファイルパスを取得。Newsモデルのimage_pathカラムに格納する。
-            $news->image_path = basename($path);
+            // $news->image_path = basename($path);
+            $news->image_path = Storage::disk('s3')->url($path);
+
             unset($news_form['image']);
             //リクエストにremoveが入っていたら削除処理を実行する
         } elseif (isset($request->remove)) {

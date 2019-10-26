@@ -23,7 +23,6 @@
         <!-- Styles -->
         {{-- Laravel標準で用意されているCSSを読み込みます --}}
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
-        {{-- 書き換える --}}
         <link href="{{ secure_asset('css/front_profile.css') }}" rel="stylesheet">
     </head>
     

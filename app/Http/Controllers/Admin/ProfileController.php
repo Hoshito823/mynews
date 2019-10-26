@@ -73,7 +73,6 @@ class ProfileController extends Controller
         $profile->delete();
         return redirect('admin/profile/');
     }
-    
-    
+
 }
 

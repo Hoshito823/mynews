@@ -24,7 +24,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'],function (){
     Route::post('profile/edit','Admin\ProfileController@update');
     Route::get('profile','Admin\ProfileController@index');
     Route::get('profile/delete','Admin\ProfileController@delete');
-    
 }
 );
 
@@ -37,4 +36,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//一般ユーザーNews表示用index
 Route::get('/','NewsController@index');
+
+//一般ユーザーProfile表示用index
+Route::get('/profile','ProfileController@index');

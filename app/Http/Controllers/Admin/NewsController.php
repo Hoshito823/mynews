@@ -33,7 +33,7 @@ class NewsController extends Controller
         if (isset($form['image'])){
             //画像本体をpublic/imageフォルダに保存する？
             // $path = $request->file('image')->store('public/image');
-            $path = Storage::disk('s3')->putfile('/',$form['image'],'public');
+            $path = Storage::disk('s3')->putFile('/',$form['image'],'public');
             
             //newsテーブルの"image_path"カラムにパスを保存している？
             // $news->image_path = basename($path);

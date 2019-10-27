@@ -84,7 +84,7 @@ class NewsController extends Controller
         if (isset($news_form['image'])){
             //ファイルを保存。次行でパスを取得するためにインスタンスを$path変数に格納。
             // $path = $news_form->file('image')->store('public/image');
-            $path = Storage::disk('s3')->putfile('/',$form['image'],'public');
+            $path = Storage::disk('s3')->putFile('/',$news_form['image'],'public');
             
             //basename（）メソッドでファイルパスを取得。Newsモデルのimage_pathカラムに格納する。
             // $news->image_path = basename($path);
